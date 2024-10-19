@@ -98,6 +98,10 @@ parts:
       - sharutils
       - texinfo
       - zlib1g-dev
+      - webkit2gtk-driver
+      - libwebkit2gtk-4.0-37
+      - libwebkit2gtk-4.0-dev
+      - libmagickwand-dev
     stage-packages:
       - gcc-10 # for tree-sitter
       - g++-10 # for tree-sitter
@@ -222,6 +226,10 @@ parts:
       - libxrender1
       - libxslt1.1
       - libyajl2
+      - webkit2gtk-driver
+      - libwebkit2gtk-4.0-37
+      - libwebkit2gtk-4.0-dev
+      - libmagickwand-dev
     stage:
       - -usr/share/emacs/site-lisp
     build-environment:
@@ -254,7 +262,10 @@ parts:
         --with-pgtk \
         --with-xinput2 \
         --with-tree-sitter \
-        --with-json
+        --with-json \
+        --with-xwidgets \
+        --with-imagemagick \
+        --with-pgtk
       env NATIVE_FULL_AOT=1 make -j"${SNAPCRAFT_PARALLEL_BUILD_COUNT}"
       cp src/emacs src/emacs-wayland
       cp lib-src/emacsclient lib-src/emacsclient-wayland

@@ -102,6 +102,9 @@ parts:
       - libwebkit2gtk-4.0-37
       - libwebkit2gtk-4.0-dev
       - libmagickwand-dev
+      - xorg-dev
+      - libcairo-5c-dev
+      - gnutls-bin
     stage-packages:
       - gcc-10 # for tree-sitter
       - g++-10 # for tree-sitter
@@ -235,7 +238,7 @@ parts:
     build-environment:
       - CC: "gcc-10"
       - CXX: "g++-10"
-      - CFLAGS: "$CFLAGS -O2 --with-xwidgets --with-imagemagick --with-pgtk"
+      - CFLAGS: "$CFLAGS -O2"
       - NATIVE_FULL_AOT: "1"
       - LD_LIBRARY_PATH: "$SNAPCRAFT_STAGE/usr/lib"
     override-pull: |
@@ -284,7 +287,10 @@ parts:
         --without-pgtk \
         --with-xinput2 \
         --with-tree-sitter \
-        --with-json
+        --with-json \
+        --with-xwidgets \
+        --with-imagemagick \
+        --with-pgtk
       env NATIVE_FULL_AOT=1 make -j"${SNAPCRAFT_PARALLEL_BUILD_COUNT}"
       cp src/emacs src/emacs-gtk
       cp lib-src/emacsclient lib-src/emacsclient-gtk

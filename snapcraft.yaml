@@ -235,7 +235,7 @@ parts:
     build-environment:
       - CC: "gcc-10"
       - CXX: "g++-10"
-      - CFLAGS: "$CFLAGS -O2"
+      - CFLAGS: "$CFLAGS -O2 --with-xwidgets --with-imagemagick --with-pgtk"
       - NATIVE_FULL_AOT: "1"
       - LD_LIBRARY_PATH: "$SNAPCRAFT_STAGE/usr/lib"
     override-pull: |
